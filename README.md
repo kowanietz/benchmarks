@@ -3,13 +3,13 @@
 ## Fibonacci Number Generation
 
 Fibonacci Numbers are defined as:
-$$
+```math
 F_n = \begin{cases}
 F_{n-1} + F_{n-2}, & n \geq2 \\
 1, & n = 1 \\
 0, & n = 0
 \end{cases}
-$$
+```
 
 ### Algorithms
 
@@ -27,7 +27,7 @@ $$
 ### Naive Recursive Algorithm
 
 By definition:
-$$F_n = F_{n-1} + F_{n-2}$$
+$F_n = F_{n-1} + F_{n-2}$
 
 ```python
 def fib_naive(n: int):
@@ -39,7 +39,7 @@ def fib_naive(n: int):
 
 ### Linear Algorithm
 
-The "linear" algorithm has a time complexity of $O(n^2)$, because each addition of two n-bit numbers takes O(n) time,
+The "linear" algorithm has a time complexity of $O(n^2)$, because each addition of two n-bit numbers takes $O(n)$ time,
 and we perform n such additions.
 
 ```python
@@ -61,7 +61,7 @@ def fib_linear(n: int):
 
 Fibonacci numbers can be computed using matrix exponentiation:
 
-$$
+```math
 \begin{bmatrix}
 0 & 1 \\ 1 & 1
 \end{bmatrix}
@@ -70,11 +70,11 @@ $$
 \begin{bmatrix}
 F_{n-1} & F_n \\ F_n & F_{n-1}
 \end{bmatrix}
-$$
+```
 
 So:
 
-$$
+```math
 \begin{bmatrix}
 F_{n} \\ F_{n+1}
 \end{bmatrix}
@@ -85,7 +85,7 @@ F_{n} \\ F_{n+1}
 \begin{bmatrix}
 0 \\ 1
 \end{bmatrix}
-$$
+```
 
 Adding up to 8 multiplications and 4 additions for each matrix multiplication, the naive matrix multiplication method
 has a time complexity of $O(n^3)$.
@@ -95,12 +95,12 @@ Those multiplications can be drastically reduced using the following methods.
 ### Fast Exponentiation Method
 
 To compute the power of a matrix efficiently, we can use the method of exponentiation by squaring:
-$$
+```math
 x^n = \begin{cases}
 x(x^2)^{(n-1)/2} & \text{if } n \text{ is odd} \\
 (x^2)^{n/2} & \text{if } n \text{ is even}
 \end{cases}
-$$
+```
 
 Reducing the number of multiplications to $O(log(n))$.
 
@@ -109,25 +109,25 @@ Reducing the number of multiplications to $O(log(n))$.
 ### 3-vector Fast Exponentiation
 
 Since the Fibonacci matrix
-$$
+```math
 Q =
 \begin{bmatrix}
 0 & 1 \\ 1 & 1
 \end{bmatrix}
-$$
+```
 
-is symmetric, every power of Q will also be a symmetrix 2x2 matrix. Any symmetrix 2x2 matrix can be encoded as a
+is symmetric, every power of $Q$ will also be a symmetrix 2x2 matrix. Any symmetrix 2x2 matrix can be encoded as a
 3-vector:
-$$
+```math
 \begin{bmatrix}
 a \\ b \\ c
 \end{bmatrix}
-$$
+```
 
 We can define this behavior as a linear map:
 
-$$
-\phi:\!R^3 \to M_{2x2}(R), \quad
+```math
+\phi:\mathbf{R}^3 \to M_{2x2}(\mathbf{R}), \quad
 \phi
 \begin{bmatrix}
 a \\ b \\ c
@@ -136,11 +136,11 @@ a \\ b \\ c
 \begin{bmatrix}
 a & b \\ b & c
 \end{bmatrix}
-$$
+```
 
 Matrix multiplication on 2x2 matrices then translates to multiplication on the 3-vectors:
 
-$$
+```math
 \phi
 \begin{bmatrix}
 a \\ b \\ c
@@ -153,11 +153,11 @@ a' \\ b' \\ c'
 \begin{bmatrix}
 aa' + bb' & ab' + bc' \\ ab' + bc' & bb' + cc
 \end{bmatrix}
-$$
+```
 
-Projecting this product back to $\!R^3$ gives us the following definition:
+Projecting this product back to $\mathbf{R}^3$ gives us the following definition:
 
-$$
+```math
 \begin{bmatrix}
 a \\ b \\ c
 \end{bmatrix}
@@ -169,7 +169,7 @@ a' \\ b' \\ c'
 \begin{bmatrix}
 aa' + bb' \\ ab' + bc' \\ bb' + cc'
 \end{bmatrix}
-$$
+```
 
 Reducing the number of multiplications from 8 to 6 and additions from 4 to 3.
 
@@ -177,19 +177,19 @@ Reducing the number of multiplications from 8 to 6 and additions from 4 to 3.
 
 Each power of the Fibonacci matrix
 
-$$
+```math
 Q =
 \begin{bmatrix}
 0 & 1 \\ 1 & 1
 \end{bmatrix}
-$$
+```
 
 can be encoded as the pair $(F_{n+1}, F_n)$, which corresponds to the second column of $Q^n$. THis is sufficient becuase
 the first column is just a shifted version of the second column.
 
 Define a 2-vector:
 
-$$
+```math
 v_Q =
 \begin{bmatrix}
 a \\ b
@@ -198,11 +198,11 @@ a \\ b
 \begin{bmatrix}
 a - b & b \\ b & a
 \end{bmatrix}
-$$
+```
 
 Matrix multiplication on 2x2 matrices then translates to multiplication on the 2-vectors:
 
-$$
+```math
 \begin{bmatrix}
 a \\ b
 \end{bmatrix}
@@ -214,19 +214,19 @@ a' \\ b'
 \begin{bmatrix}
 aa' + bb' \\ ab' + ba' + bb'
 \end{bmatrix}
-$$
+```
 
 Reducing the number of multiplications from 6 to 4 and additions from 3 to 2.
 
 ### Fast Doubling
 
 Using the identities:
-$$
+```math
 F_{2n} = F_n(2F_{n+1} - F_n)
-$$
-$$
+```
+```math
 F_{2n+1} = F_{n+1}^2 + F_n^2
-$$
+```
 
 # Usage
 
