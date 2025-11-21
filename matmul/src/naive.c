@@ -1,11 +1,6 @@
-#include <stddef.h>
 
 void naive(const double *A, const double *B, double *res,
-            const int m, const int k, const int n) {
-    // A: m x k
-    // B: k x n
-    // C: m x n
-    // Row-major layout: A[i, t] = A[i*k + t], B[t, j] = B[t*n + j], C[i, j] = C[i*n + j]
+           const int m, const int k, const int n) {
 
     for (int i = 0; i < m; i++) {
         for (int j = 0; j < n; j++) {
