@@ -5,6 +5,7 @@ from .fibonacci import (
     fib_matmul_fastexp,
     fib_matmul_3var,
     fib_matmul_2var,
+    fib_fast_doubling,
     fib_gmp,
 )
 
@@ -15,5 +16,6 @@ __all__ = [
     "fib_matmul_fastexp",
     "fib_matmul_3var",
     "fib_matmul_2var",
+    "fib_fast_doubling",
     "fib_gmp",
 ]
