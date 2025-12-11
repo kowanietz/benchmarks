@@ -7,7 +7,7 @@ uint32_t trial_division_naive(const uint32_t n) {
     uint32_t count = 0;
     uint32_t candidate = 2;
 
-    while (count < n) {
+    while (count <= n) {
         bool is_prime = true;
 
         for (uint32_t divisor = 2; divisor < candidate; divisor++) {
