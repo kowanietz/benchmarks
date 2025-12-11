@@ -1,1 +1,1 @@
-from .primes import trial_division_naive, trial_division_sqrt
+from .primes import trial_division_naive, trial_division_sqrt, trial_division_sqrt_odd

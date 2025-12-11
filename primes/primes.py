@@ -23,13 +23,25 @@ lib.trial_division_sqrt.argtypes = [
     ctypes.c_uint32,
 ]
 
+lib.trial_division_sqrt_odd.restype = ctypes.c_uint32
+lib.trial_division_sqrt_odd.argtypes = [
+    ctypes.c_uint32,
+]
+
 
 def trial_division_naive(n: int) -> int:
     prime = lib.trial_division_naive(n)
 
     return prime
 
+
 def trial_division_sqrt(n: int) -> int:
     prime = lib.trial_division_sqrt(n)
+
+    return prime
+
+
+def trial_division_sqrt_odd(n: int) -> int:
+    prime = lib.trial_division_sqrt_odd(n)
 
     return prime
