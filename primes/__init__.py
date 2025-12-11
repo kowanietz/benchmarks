@@ -1,0 +1,1 @@
+from .primes import trial_division_naive, trial_division_sqrt

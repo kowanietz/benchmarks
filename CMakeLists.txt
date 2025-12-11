@@ -8,3 +8,4 @@ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -O3 -march=native -fPIC")
 
 add_subdirectory(fibonacci)
 add_subdirectory(matmul)
+add_subdirectory(primes)
