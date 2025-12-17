@@ -1,8 +1,13 @@
 # Algorithm optimization in C
 
+[Fibonacci Number Generation](#fibonacci-number-generation)
+
+[Prime Number Generation](#prime-number-generation)
+
 ## Fibonacci Number Generation
 
 Fibonacci Numbers are defined as:
+
 ```math
 F_n = \begin{cases}
 F_{n-1} + F_{n-2}, & n \geq2 \\
@@ -95,6 +100,7 @@ Those multiplications can be drastically reduced using the following methods.
 ### Fast Exponentiation Method
 
 To compute the power of a matrix efficiently, we can use the method of exponentiation by squaring:
+
 ```math
 x^n = \begin{cases}
 x(x^2)^{(n-1)/2} & \text{if } n \text{ is odd} \\
@@ -109,6 +115,7 @@ Reducing the number of multiplications to $O(log(n))$.
 ### 3-vector Fast Exponentiation
 
 Since the Fibonacci matrix
+
 ```math
 Q =
 \begin{bmatrix}
@@ -118,6 +125,7 @@ Q =
 
 is symmetric, every power of $Q$ will also be a symmetrix 2x2 matrix. Any symmetrix 2x2 matrix can be encoded as a
 3-vector:
+
 ```math
 \begin{bmatrix}
 a \\ b \\ c
@@ -221,12 +229,37 @@ Reducing the number of multiplications from 6 to 4 and additions from 3 to 2.
 ### Fast Doubling
 
 Using the identities:
+
 ```math
 F_{2n} = F_n(2F_{n+1} - F_n)
 ```
+
 ```math
 F_{2n+1} = F_{n+1}^2 + F_n^2
 ```
+
+# Prime Number Generation
+
+Prime numbers are defined as:
+
+```math
+\text{Prime}(p) \iff
+\begin{cases}
+p \ge 2, \\
+\forall d \in \mathbb{N}:\; d \mid p \Rightarrow (d = 1 \lor d = p)
+\end{cases}
+```
+
+### Algorithms
+
+| Algorithm                          | Time Complexity (primality test) | Time Complexity (generate primes ≤ n) |
+|------------------------------------|:--------------------------------:|:-------------------------------------:|
+| Trial Division (Naive)             |              $O(n)$              |                   -                   |
+| Trial Division (Square Root)       |           $O(\sqrt{n})$          |                   -                   |
+| Trial Division (Square Root, Odds) |           $O(\sqrt{n})$          |                   -                   |
+| Trial Division (Known Divisors)    |      $O(\frac{\sqrt{n}}{ln n})$  |                   -                   |
+| Sieve of Eratosthenes              |                -                 |           $O(n \log \log n)$          |
+| Sieve of Eratosthenes ($p^2$)      |                -                 |           $O(n \log \log n)$          |
 
 # Usage
 
